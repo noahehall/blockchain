@@ -277,7 +277,8 @@
   - when its time to add a block, a randomly selected delegate is selected as speaker, proposes the block of transactions to add, and atleast 66% of the other delegates must approve, the process repeates if less than 66% (2/3rds) fail to approve the proposed block
 - neo uses DBFT
 - said to be much faster that PoW because there are no complicated cryptographic puzzles to solve
-- there are no forks: because there is always only one versin of truth (due to the consensus nodes + voting process)
+- there are no forks: because there is always only one version of truth
+  - due to the consensus nodes + voting process
 - assignes roles to nodes to help coordinate consensus
 - does not have miners, but instead consensus nodes and regular nodes
   - regular nodes: just normal users
@@ -290,8 +291,10 @@
 - issues
   - bad speaker: since speakers are chosen randomly, the selected speaker could be dishonest/malfunction
     - solution: since users vote on delegates, and delegates are randomly selected to become speaker, its up to the users to ensure only honest nodes become delegates
+      - haha dumb fkn people problem!
   - bad delegates: users may not know which other nodes are good, and be unable to cast meaningful votes
     - solution: some platforms release data about the honesty and functioning of each delegate for voters to review
+      - haha! dumb fkn people problem!
 
 #### Proof of Activity
 
@@ -311,7 +314,7 @@
   - can be made up of multiple transaction inputs and outputs
     - e.g. a single input will generally require two outputs, input to cover the value being transferred + miner fees, 1 output to the receiver, 1 output as change back to the sender
 - transaction inputs:
-  - all inputs are unspent outputs from another transaction, i.e. all inputs reference back to an output, e.g. the initial funding of a wallet (like a linked list)
+  - all inputs are unspent outputs from another transaction, i.e. all inputs reference back to an output, e.g. the initial funding of a wallet
   - conditions: transaction inputs need to be converted to an output, which contains the condition to prove ownership using a private key
 - transaction output: aka UTXO; the amount received by a wallet in a transaction
   - UTXO: unspent transaction output; the initial broadcast of a transaction to the network; only UTXO messages can be used as inputs to an accepted transaction
@@ -319,7 +322,7 @@
     - is indivisible, like a coin, cant be cut in half,
       - if the value of a UTXO is larger than the desired value of a transaction, it must still be consumed in its entired, and an additional output must be created to give change back to the owner
   - when a user receives bitcoin, that amount is recorded on the blockchain as unspent outputs (UTXO);
-  - all of a wallets UTXO is scattered throughought the blockchain
+  - all of a wallets UTXO is scattered throughout the blockchain
   - when its time for them to spend that bitcoin, the wallet scans the blockchain and aggregates all the UTXO belonging to that user, and calculates the balance
     - i.e. theres no such thing as a stored balance for an account/bitcoin address; theres just a bunch of UTXO scattered on the blockchain, all linking back to a specific wallet address
 - lifecycle 1
@@ -347,7 +350,6 @@
       - be careful, as now the source wallet has been shared, it increases the likelihood of being compromised
   - sweep a private key: move the private key of a source wallet into a destination wallet
     - the source wallet is now empty, and the destination becomes the new source
-    -
 
 #### keys
 
@@ -376,10 +378,8 @@
 #### non deterministic wallet
 
 - random wallets where private keys are generated from random private keys as seeds (instead of easy to remember words)
-
   - random number > priv key > pub key > wallet addrss
   - nothing can be traced back to the random number
-
 - best practices
   - generate a new wallet address for each transaction, so no one can trck links between addresses
   - make sure to backup the wallet, so you dont lose the generated priv key
@@ -426,7 +426,7 @@
 
 ### digital signatures
 
-- check websecurity.md#encryption
+- check websecurity file
   - all blockchains use
     - assymetric (public-key) encryption for wallets
       - public key: encrypt data
@@ -439,14 +439,12 @@
 ### digital assets
 
 - digitally stored content/online account owned by an individual
-
   - blockchains help with ownership of digital assets, but not storage,
     - see proof of existence elseware
     - instead of who owns this transaction, the blockchain answers who owns this asset
-
 - compression algorithms: goal is to make something smaller
 - encoding: process of putting a sequence of chars into a specialized (raw) format for efficient transmission between computers or storage
-  - ASCII: (pronounced asky) american standard code for information interchange; based on the idea that you can represent text as numbers
+  - ASCII: (pronounced asky, or ass-kee) american standard code for information interchange; based on the idea that you can represent text as numbers
   - Base64: more concise and human redable representation of binary;
   - Hexadecimal: encoding scheme meant to represent data as numbers in a string format; 0-9 and a-f; use xxd on the cmd line
 - decoding: takes encoded, raw, unreadable files and converts them back into human readable format
@@ -473,10 +471,9 @@
   - certifies the existence of an asset without the need for a central authority
   - secure an asset: protect an asset from wrongful access/alteration
 
-#### NFTs
+#### Non Fungible Tokens (NFTs)
 
-- non-fungible tokens
-  - non fungible: an economic term you could use to describe things like furniture, a song file, etc; things that arent exchangable for other items because they have unique properties
+- non fungible: an economic term you could use to describe things like furniture, a song file, etc; things that arent exchangable for other items because they have unique properties
 - can only have one official owner (based on their private key) at a time
   - similar to how you sign messages with a private key to prove you created the msg,
   - however there is a way to create fractional/shared ownership
