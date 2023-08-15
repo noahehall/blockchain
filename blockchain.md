@@ -50,13 +50,11 @@
 - defi: decentralized finance
 - dao: decentralized autonomous organization
 - encryption: make a non-reversable secret (laymens), vs encoding (which is reformating)
-- blockchain: a shared ledger (db) that records a list of transactions that happen within the network
-  - started as an idea by Satoshi Nakamoto back in 2009 to solve problems with financial transactions
-  - bitcoin is the first blockchain, but now there are many more
 - transactions: a record of information, e.g. who sent it, received, etc
   - are sent to other users and grouped with other transactions into a block
   - once the block is filled with enough transactions, it is permanently added to the blockchain
 - hash: a unique fingerprint assigned to a block
+  - this is a cryptographic hash, not a hash or checksum
   - any change to the block will require a change to the hash, making the block invalid
   - each block receives a hash value, as well as the hash value of the block that was created before it, hence you get a blockchain
 - blockchain data is
@@ -71,6 +69,9 @@
 
 ## blockchains
 
+- a shared ledger (db) that records a list of transactions that happen within the network
+  - started as an idea by Satoshi Nakamoto back in 2009 to solve problems with financial transactions
+  - bitcoin is the first blockchain, but now there are many more
 - can be thought of as a type of decentralized database
 - public blockchain:
   - permission: open and permissionless design that allows anyone to participate
@@ -79,22 +80,16 @@
   - compliance: more difficult
 - private blockchain:
   - permission: required, and are typically under centralized control
+- both private & public
+  - depend on a wallet address for identity for transactions and services
+  - both keep a public record of transactions that have taken place
+  - users can interact autonomously on the blockchain, and others can verify their data
 - cross-chain functionality: connecting data across blockchains
   - allows a series of protocols that work in harmony to delivery decentralized applications
   - e.g. a private blockchain can store public blockchain data, like to log bitcoin transactions via their transaction id hash
-  - e.g. a public blockchain can store private blockchain by embedding data, e.g. bitcoin core OP_RETURN can store up to 40bytes
-    In the Blockchain class we are going to implement the method: validateChain()
-    This method will return a Promise that will resolve with the list of errors when validating the chain.
-    Steps to validate:
-    You should validate each block using validate() method from each of the blocks in the chain.
-    Each Block should check the with the previousBlockHash to make sure the chain isn't broken.
-    vs 2
-  - both
-    - depend on a wallet address for identity for transactions and services
-    - both keep a public record of transactions that have taken place
-    - users can interact with autonomously on the blockchain, and ohters an verify their data
+  - e.g. a public blockchain can store private blockchain data via embedding, e.g. bitcoin core OP_RETURN can store up to 40bytes
 
-### version 1 / generation 1 blockchains
+### version/generation 1 blockchains
 
 - focused on moving value, maintaining a ledger, and creating ideal payment systems
 
@@ -114,7 +109,7 @@
 
 - todo
 
-### version 2 / generation 2
+### version/generation 2
 
 - takes many of the lessons learned from first generation blockchains
 - focused on recording transactions on the blockchain, adding in programming & logic for associated data via smart contracts
