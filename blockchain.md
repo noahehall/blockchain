@@ -1,9 +1,6 @@
 # blockchain
 
-- most comes from udacity's blockchain developer nanodegree
-
-- skipped
-  - udacity online workspace; rather use my local machine
+- udacitys blockchain course
 
 ## links
 
@@ -50,9 +47,6 @@
 - defi: decentralized finance
 - dao: decentralized autonomous organization
 - encryption: make a non-reversable secret (laymens), vs encoding (which is reformating)
-- transactions: a record of information, e.g. who sent it, received, etc
-  - are sent to other users and grouped with other transactions into a block
-  - once the block is filled with enough transactions, it is permanently added to the blockchain
 - hash: a unique fingerprint assigned to a block
   - this is a cryptographic hash, not a hash or checksum
   - any change to the block will require a change to the hash, making the block invalid
@@ -96,49 +90,44 @@
 #### bitcoin core
 
 - the first, but now one of many blockchains
-  - generally considered blockchain version 1 (first generation)
 - a type of digital currency that utilizes the blockchain to facilitate financial transactions
 - uses blocks to group and validate transactions
 - uses sha256 to create a unique hash value for each block on the blockchain
 
 #### litecoin
 
-- todo
-
 #### monero
-
-- todo
 
 ### version/generation 2
 
 - takes many of the lessons learned from first generation blockchains
 - focused on recording transactions on the blockchain, adding in programming & logic for associated data via smart contracts
 - smart contracts: a legal contract via code
-  - an event, triggers the contract to execute whatever code is held within the contract
+  - an event triggers the contract to execute whatever code is held within the contract
   - enabled developers to create projects ontop of the blockchain and organize decentralized governance
 - dApps: application whose backend runs on a decentralized network
 
 #### ethereum
 
-- generally considered blockchain version 2 (2nd generation), and first introduced the smart contract
+- the first to introduce smart contracts
   - see ethereum doc
 
 #### neo
 
-- todo
-
 ## blockchain framework
 
-- overview of blockchain components
-  - transaction: basic atomic units of work, submitted by users to a node to be included in the next block
-  - wallet: contains priv, public keys and address: the addresses are used to send/receive transactions
-  - digital signature: transactions must be signed by the wallet keys before being sent to the mempool to be included in a block on the blockchain
-  - mempool (memory pool): where all unconfirmed transactions are placed until mining nodes validate the transaction
-  - network (distributed P2P network): everyone is able to download a copy of the network data, and work together to achieve consensus to determine which transactions (in the mempool) are valid and should be included in the network ledger
-  - consensus: a group of algorithms used to create a voting mechanism/process, e.g. PoF, PoS, DBFT
-  - block: groups transactions and created a single hash for the set
-  - blockchain: groups of blocks linked via their hashes, contains the entire history of transactions
-  - hashing: process of generating a digital fingerprint
+- transaction: a record of information, e.g. who sent it, received, etc
+  - are sent to other users and grouped with other transactions into a specific block
+  - submitted by users to a node to be included in the next block
+  - once the block is filled with enough transactions, it is permanently added to the blockchain
+- wallet: contains priv, public keys and address: the addresses are used to send/receive transactions
+- digital signature: transactions must be signed by the wallet keys before being sent to the mempool to be included in a block on the blockchain
+- mempool (memory pool): where all unconfirmed transactions are placed until mining nodes validate the transaction
+- network (distributed P2P network): everyone is able to download a copy of the network data, and work together to achieve consensus to determine which transactions (in the mempool) are valid and should be included in the network ledger
+- consensus: a group of algorithms used to create a voting mechanism/process, e.g. PoF, PoS, DBFT
+- block: groups transactions and created a single hash for the set
+- blockchain: groups of blocks linked via their hashes, contains the entire history of transactions
+- hashing: process of generating a digital fingerprint
 
 ### state
 
@@ -154,20 +143,20 @@
 - block components
   - body: list of transactions
   - header: block metadata
-    - previous blocks hash: the hash value for the block that comes immediately before this one, (think linked list)
+    - previous blocks hash: the hash value for the block that comes immediately before this one
     - time the block was made: the blockchains solutions to the double-spending problem:
     - merkle root: hash that represents every transaction inside the block
       - pairs of transactions are hashed repeatedly, until youre left with a single hash value
       - can be used to reverse engineer the transaction hash values that made the merkle root
-        - you use the hash to search the original transactions (hash values) that created them - enables you to find the original transactions that made up the block when starting from merkle root
+        - you use the hash to search the original transactions (hash values) that created them
+        - enables you to find the original transactions that made up the block when starting from merkle root
     - nonce: an arbitrary number that can only be used once
       - block data + nonce = hash value
-      - has to do with mining
 - block difficulty: the number of 0s requested to make the nonce, the more the 0s the more greater the difficulty
 - block size: the amount of space a block has to hold information (e.g. 1mb)
   - is decided by the developer
   - determines how long it takes to create a block, and how many blocks will be on the chain. is the same for every block on the chain, and can only be changed via an update
-- block number: identifies the position of this block within the blockchain, i.e. the block # 1 is the first block
+- block number: identifies the position of this block within the blockchain, i.e. block 1 is the first block
   - genesis block: the block with number 1
 - blocks hash value: it includes this blocks data + the hash value of the previous block, creating a chain of blocks (blockchain)
 
@@ -195,13 +184,13 @@
 
 - the waiting place (backlog) for unconfirmed transactions to be verified before they are added to the blockchain
   - the purpose is to provide transaction security
-    - transactions must be included in a block, and the block confirmed six times before being added to the blockchain
-      - 6 confirmations means 5 additional blocks have been added to that blockchain, then the entire 6 blocks get added to the overall blockchain
-      - its considered irrevocable after 6 confirmations, because it will take an considerable amount of CPU resources to revalidate 6 entire blocks
+  - transactions must be included in a block, and the block confirmed six times before being added to the blockchain
+    - 6 confirmations means 5 additional blocks have been added to that blockchain, then the entire 6 blocks get added to the overall blockchain
+    - its considered irrevocable after 6 confirmations, because it will take an considerable amount of CPU resources to revalidate 6 entire blocks
   - transactions sit in RAM (memory) of all the nodes on the bitcoin network
   - six/more confirmations is sufficient proof for a transaction to leave the mempool and be included in a block on the blockchain
-  - before a transaction can be considered complete, it must be verified by specialized nodes on the network called miners (at least 6 confirmations)
-- miners: help ensure consensus on the blockchain by verifieing transactions in the mempool
+  - before a transaction can be considered complete, it must be verified by specialized nodes on the network called miners
+- miners: help ensure consensus on the blockchain by verifying transactions in the mempool
 - valid reasons for a transaction to leave the mempool (eviction does not imply a transaction is canceled)
   - the transaction expired by timeout (default 14 days after entering)
   - transaction was at the bottom (when sorted by fee per size), the mempool reached its size limit, and a new higher-fee transaction was accepted, evicting the transaction at the bottom
@@ -211,20 +200,19 @@
   - everytime a sender puts out a transaction into the mempool, they add a transaction fee, a tip for the miner to validate the transaction
   - miners can look through all possible transactions and will pick the one with the higest fee, (thats how they get paid)
 
-### consensus (idea and algorithms)
+### consensus
 
 - drives all the decisions made to establish and grow the blockchain; its how the blockchain makes decisions; and how blocks join the blockchain
-- is an idea, thats implemented via different algorithms
-  - a voting process for the network, that makes decisions about information on the blockchain, e.g. which transactions are most trustworthy
-- byzantine generals' problem: an analogy for a distributed network and reaching consensus amongst nodes
+- a voting process for the network, that makes decisions about information on the blockchain, e.g. which transactions are most trustworthy
+- byzantine generals problem: an analogy for a distributed network and reaching consensus amongst nodes
   - 9 generals encircling an army, need to make a decision about how best to attack, or retreat, and all nine must agree to do the same thing, else they will lose
-  - of the 9 generals, there could be some who are traitors (theres always traitors in the mix)
+  - of the 9 generals, there could be some who are traitors (word to malcolm X)
   - the generals are physically separated, and must send their votes via messengers, which could be attacked along the way, lose the msg, or change the msg
 
 #### proof of work (PoW)
 
 - summary: miner nodes solve a math puzzle that requires a lot of computation power. whichever miner is able to solve the puzzle the fastest is able to add a block of transactions to the blockchain
-  - in return, they are paid the transaction fees from all the transactions included in the block, as well as paid by the netowrk with bitcions that were newly created upon the mining of the block
+  - in return, they are paid the transaction fees from all the transactions included in the block, as well as paid by the netowrk with bitcoins that were newly created upon the mining of the block
 - bitcoin uses PoW
 - a way to achieve consensus without a centralized authority, original proposed by bitcoin (see the paper link)
 - whoever puts in the most work to contribute to the system is the most trustworthy
@@ -235,7 +223,7 @@
   - the nodes that solve the problem are known as miners
     - miners are in a race with eachother to solve the next problem, in order to be the one that puts the next block on the blockchain
     - in return for their time and resources they are paid transaction fees (by the users) and in bitcoin (by the network)
-      - the bitcoin are created specifically for miners, and is the only way new coins are added to the network
+      - the bitcoin is created specifically for miners, and is the only way new coins are added to the network
 - the proof of work requires a certain type of hash value, that starts with a certain amount of zeros (this is the block difficulty)
   - you get the zeros by having the correct Nonce + block data
   - since the block data (the transactions) arent changing, the only option is to change the Nonce
@@ -255,10 +243,10 @@
 
 - summary: there are no miners, instead validators (stakeholders) determine which block makes it onto the chain
   - bad delegates: users may not know which other nodes are good, and be unable to cast meaningful votes
-    - solution: some platforms release data about the honesty and functiir own coins as stake, like placing a bet
+    - solution: some platforms release data about the honesty and put up their own coins as stake, like placing a bet
   - if they validate a fraudulent transaction, they lose their stake as well as their rights to participate as a validator in the future
 - who uses it
-  - ethereum uses PoS (but use to be on PoW)
+  - ethereum uses PoS (but use to be use PoW)
   - DASH: pioneer of PoS: built from the core bitcoin platform with added features for privacy and Tx speed
     - PrivateSend: todo
     - InstantSend: todo
@@ -275,22 +263,19 @@
     - if a validators block is added to the blockchain, they are added coin proportional to the amount of their stake
   - there are no miners in PoS that mine coins, because all the coins already exist
 - forks: TODO
-  - basically when there are multiple proposed blocks and that split a chain, need to research this some more
+  - basically when there are multiple proposed blocks and that leads to a split, need to research this some more
 - issues
   - nothing at stake problem: if a validator bets on multiple blocks, so they always win.
     - slasher solution: validators are penalized if they simutaneously create blocks on multiple chains
-    - other solution: validators on penalized for creating blocks on the wrong chain; forcing them to be selective about which blockchain to put their stake on
+    - other solution: validators are penalized for creating blocks on the wrong chain; forcing them to be selective about which blockchain to put their stake on
 
 #### delegated proof of stake
 
-- todo
-
-#### DBFT algorithm
+#### delegated Byzantine fault tolerance (DBFT) algorithm
 
 - summary: ordinary nodes in the system vote on representative delegate nodes; the delegate nodes decide which blocks should be added to the blockchain
   - when its time to add a block, a randomly selected delegate is selected as speaker, proposes the block of transactions to add, and atleast 66% of the other delegates must approve, the process repeates if less than 66% (2/3rds) fail to approve the proposed block
 - neo uses DBFT
-- delegated Byzantine fault tolerance
 - said to be much faster that PoW because there are no complicated cryptographic puzzles to solve
 - there are no forks: because there is always only one versin of truth (due to the consensus nodes + voting process)
 - assignes roles to nodes to help coordinate consensus
@@ -310,15 +295,9 @@
 
 #### Proof of Activity
 
-- todo
-
 #### proof of elapsed time
 
-- todo
-
 #### proof of burn
-
-- todo
 
 ### transactions
 
