@@ -150,7 +150,7 @@
       - can be used to reverse engineer the transaction hash values that made the merkle root
         - you use the hash to search the original transactions (hash values) that created them
         - enables you to find the original transactions that made up the block when starting from merkle root
-    - nonce: an arbitrary number that can only be used once
+    - nonce: i.e. number only used once; an arbitrary number that can only be used once
       - block data + nonce = hash value
 - block difficulty: the number of 0s requested to make the nonce, the more the 0s the more greater the difficulty
 - block size: the amount of space a block has to hold information (e.g. 1mb)
