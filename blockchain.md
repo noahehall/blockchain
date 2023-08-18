@@ -107,9 +107,12 @@
 
 - takes many of the lessons learned from first generation blockchains
 - focused on recording transactions on the blockchain, adding in programming & logic for associated data via smart contracts
-- smart contracts: a legal contract; programs that perform transactions with the ability to act on acccounts and the data stored in the blockchain
-  - an event triggers the contract to execute whatever code is held within the contract
-  - enabled developers to create programs ontop of the blockchain and organize decentralized governance
+
+#### Smart Contracts
+
+- a legal contract; programs that perform transactions with the ability to act on acccounts and the data stored in the blockchain
+- an event triggers the contract to execute whatever code is held within the contract
+- enabled developers to create programs ontop of the blockchain and organize decentralized governance
 - dApps: application whose backend runs on a decentralized network
 
 #### ethereum
@@ -529,11 +532,25 @@
 - Role Permissions: Permissions to perform business actions are assigned by roles.
   - The web interface and smart contracts enforce the permissions, preventing rogue users from tampering
 
+#### Smart Contract considerations
+
+- consensus
+  - arbitration: how are disputes handled; must abide (and think about) laws in the real world
+  - transaction validation: all participants required?
+  - record immutability: will amend/cancel operations be required?
+- data storage: which blockchain to utilize?
+  - transactional data: can be split between blockchain and traditional databases,
+  - visibility: public/private blockchain
+
 ## Use cases
+
+- remember the blockchain is simply a distributed ledger for tracking stuff
+- you can utilize the blockchain as a database for any thing that needs to be tracked and verified by participants in a process
 
 ### Supply Chain Management
 
 - everything needed to plan, build, create, manufacture and deliver a product to different types of customers
+  - all the processes involved with the production and distribution of a commodity.
 - the goal is to streamline a distributed and complicated process, building trust between suppliers and partners and automation of contracts and negotiations throughough every step
 - benefits of smart contracts
   - transparency
