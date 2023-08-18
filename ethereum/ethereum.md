@@ -2,10 +2,10 @@
 
 - open source programmable blockchain platform
 - a decentralized platform that runs smart contracts
-- a general purpose blockchain, thats built to run anytime of smart contract
+- a general purpose blockchain, thats built to run any type of smart contract
   - as opposed to first genertion blockchains, built to execute specific transaction types (e.g. bitcoin === finance)
 - characteristics
-  - permissionless: anyone can join the networ
+  - permissionless: anyone can join the network
   - consensus: PoW, but working towards Proof of Stake
   - scalability: high node scalability, low perf scalability (15s to add a block to the chain)
     - compare that with visa/mastercard, which process about 5k transactions per second
@@ -25,6 +25,7 @@
 - [ethereum courses on block geeks](https://courses.blockgeeks.com/course/bg101-ethereum-course-101/)
 - [all ERC-20 ethereum tokens](https://etherscan.io/tokens)
 - [all ERC-721 (nft) tokens](https://etherscan.io/tokens-nft)
+- [ethereum web3js client](https://web3js.readthedocs.io)
 - todo
   - [ethereum yellowpaper](https://github.com/ethereum/yellowpaper)
   - [ethereum docs](https://ethdocs.org/en/latest/introduction/what-is-ethereum.html?highlight=EVM#ethereum-virtual-machine)
@@ -40,7 +41,6 @@
 
 ## terms
 
-- turing complete: can execute code
 - ether: the cryptocurrency of ethereum
 - kill switch: self destructs a smart contract
 - patricia tree: data structure; Practical Algorithm to Retrieve Information Code in Alphanumeric

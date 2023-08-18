@@ -1,6 +1,6 @@
 # matamask
 
-- (a browser) wallet & tool for interacting with dapps
+- (a browser) wallet & tool for interacting with ethereum dapps directly in the browser without running a full ethereum node
   - works as an injected web3 provider
     - it injects web3 into the browser so dApps can use it,
     - also makes a node available

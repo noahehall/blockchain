@@ -7,40 +7,45 @@
 - [solidity: ethereum programming language](https://soliditylang.org/)
 - [how to timestamp a digital document, the first block idea](https://www.anf.es/pdf/Haber_Stornetta.pdf)
 - [ethereum NFT docs](https://ethereum.org/en/nft/)
-- todos
-  - [bitcoin: peer to peer electornic cash system and PoW](https://bitcoin.org/bitcoin.pdf)
-  - [anders bitcoin hashing](https://anders.com/blockchain/hash.html)
-    - link no longer works
-  - [anders blockchain block](https://anders.com/blockchain/block)
-    - no longer works
-  - [bitcoin hash wiki](https://en.bitcoin.it/wiki/Hash)
-  - [cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
-  - [blockchain.com](https://www.blockchain.com/about/index.html)
-  - [blockchain.com unconfirmed transactions](https://www.blockchain.com/btc/unconfirmed-transactions)
-  - [blockchain.com charts](https://www.blockchain.com/charts)
-  - [bitcoin visuals](https://bitcoinvisuals.com/stats)
-  - [ethereum](https://ethereum.org/)
-  - [dash](https://www.dash.org/)
-  - [lisk](https://lisk.io/)
-  - [ethereum PoS FAQs](https://github.com/ethereum/wiki/wiki/Proof-of-Stake-FAQs)
-  - [wikipedia proof of stake: block selection methods](https://en.wikipedia.org/wiki/Proof-of-stake)
-  - [alternative proof of stake methods](https://dailyfintech.com/2016/01/20/why-proof-of-stake-matters-for-blockchain/#content-wrapper)
-  - [DBFT: neos consensus protocol](https://steemit.com/neo/@basiccrypto/neo-s-consensus-protocol-how-delegated-byzantine-fault-tolerance-works)
-  - [proof of activity](https://www.coinbureau.com/blockchain/proof-of-activity-explained-hybrid-consensus-algorithm/)
-  - [proof of burn](https://99bitcoins.com/what-is-proof-of-burn/)
-  - [neo blockchain](https://neo.org/)
-  - [multicoin capital](https://multicoin.capital/)
-  - [electrum](https://electrum.org/#home)
-  - [getting started with electrum](https://www.youtube.com/watch?v=WdVlH9N2oKU)
-  - [importing priv keys in electrum](https://bitcoinelectrum.com/importing-your-private-keys-into-electrum/)
-  - [sweep a private key in electrum](https://bitcoinelectrum.com/sweepi- privatetaddress.org)
-  - [generate a private key by flipping a coin](https://bitcointalk.org/index.php?topic=297077.msg3197393#msg3197393)
-  - [generate a private key offline](https://github.com/bigmob/cryptosteel-tutorial/wiki/How-to-generate-private-key-offline-with-Bitaddress)
-  - [full list of wallets](https://bitcoin.org/en/choose-your-wallet)
-  - [proof of existence service](https://poex.io/)
-  - [dappradar](https://dappradar.com/)
-  - [state of the dapp](https://www.stateofthedapps.com/)
-  - [trust dapp browser](https://trustwallet.com/dapp)
+
+### todos
+
+- [AAAA: figure out ethereum storage](https://ethereum.org/en/developers/docs/storage/)
+- [bitcoin: peer to peer electornic cash system and PoW](https://bitcoin.org/bitcoin.pdf)
+- [anders bitcoin hashing](https://anders.com/blockchain/hash.html)
+  - link no longer works
+- [anders blockchain block](https://anders.com/blockchain/block)
+  - no longer works
+- [bitcoin hash wiki](https://en.bitcoin.it/wiki/Hash)
+- [cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
+- [blockchain.com](https://www.blockchain.com/about/index.html)
+- [blockchain.com unconfirmed transactions](https://www.blockchain.com/btc/unconfirmed-transactions)
+- [blockchain.com charts](https://www.blockchain.com/charts)
+- [bitcoin visuals](https://bitcoinvisuals.com/stats)
+- [ethereum](https://ethereum.org/)
+- [dash](https://www.dash.org/)
+- [lisk](https://lisk.io/)
+- [ethereum PoS FAQs](https://github.com/ethereum/wiki/wiki/Proof-of-Stake-FAQs)
+- [wikipedia proof of stake: block selection methods](https://en.wikipedia.org/wiki/Proof-of-stake)
+- [alternative proof of stake methods](https://dailyfintech.com/2016/01/20/why-proof-of-stake-matters-for-blockchain/#content-wrapper)
+- [DBFT: neos consensus protocol](https://steemit.com/neo/@basiccrypto/neo-s-consensus-protocol-how-delegated-byzantine-fault-tolerance-works)
+- [proof of activity](https://www.coinbureau.com/blockchain/proof-of-activity-explained-hybrid-consensus-algorithm/)
+- [proof of burn](https://99bitcoins.com/what-is-proof-of-burn/)
+- [neo blockchain](https://neo.org/)
+- [multicoin capital](https://multicoin.capital/)
+- [electrum](https://electrum.org/#home)
+- [getting started with electrum](https://www.youtube.com/watch?v=WdVlH9N2oKU)
+- [importing priv keys in electrum](https://bitcoinelectrum.com/importing-your-private-keys-into-electrum/)
+- [sweep a private key in electrum](https://bitcoinelectrum.com/sweepi- privatetaddress.org)
+- [generate a private key by flipping a coin](https://bitcointalk.org/index.php?topic=297077.msg3197393#msg3197393)
+- [generate a private key offline](https://github.com/bigmob/cryptosteel-tutorial/wiki/How-to-generate-private-key-offline-with-Bitaddress)
+- [full list of wallets](https://bitcoin.org/en/choose-your-wallet)
+- [proof of existence service](https://poex.io/)
+- [dappradar](https://dappradar.com/)
+- [state of the dapp](https://www.stateofthedapps.com/)
+- [trust dapp browser](https://trustwallet.com/dapp)
+- [why web 3.0 matters](https://medium.com/@Matzago/why-the-web-3-0-matters-and-you-should-know-about-it-a5851d63c949)
+- [understanding web 3.0](https://www.coinbase.com/blog/understanding-web-3-a-user-controlled-internet)
 
 ## terminology
 
@@ -102,9 +107,9 @@
 
 - takes many of the lessons learned from first generation blockchains
 - focused on recording transactions on the blockchain, adding in programming & logic for associated data via smart contracts
-- smart contracts: a legal contract via code
+- smart contracts: a legal contract; programs that perform transactions with the ability to act on acccounts and the data stored in the blockchain
   - an event triggers the contract to execute whatever code is held within the contract
-  - enabled developers to create projects ontop of the blockchain and organize decentralized governance
+  - enabled developers to create programs ontop of the blockchain and organize decentralized governance
 - dApps: application whose backend runs on a decentralized network
 
 #### ethereum
@@ -489,3 +494,50 @@
 - scarcity: creator decides how many NFT (i.e. tokens) exist
   - e.g. 500 tickets to a concert, 1 art piece
 - royalties: some NFTs automatically pay out royalties to their creators (e.g. foundation.app, zora.co)
+
+## Web 3.0
+
+- web 1: the birth of the internet
+- web 2: dominated by large players
+  - doesnt hold state: you cannot inspect the history of connected devices
+  - doesnt transfer state: large centralized services control the bit of state that exists and the value it providers
+  - cookies: controlled by service providers, not the users
+- web 3: allows the internet to hold and transfer state and the value state provides
+  - gives the power to the users/creators instead of centralized into large corps
+
+### Architectural Components
+
+- wallet: the core mechanism through which users interact with web3 applications
+  - manage their private keys and sign transactions
+  - interact with the frontend that connects to a blockchain server
+- blockchain server: middle man between a frontend client (wallet/another server) and the blockchain network
+  - blockchain node provider
+- decentralized storage
+  - in the course IPFS and Swarm were talked about, but both seem to be dead
+  - theres a link in the TODOs for the ethereum storage docs
+
+#### Modeling Blockchain Solutions
+
+- Assets: Any physical or digital entity that requires tracking
+- Attributes: anything of interest: asset (what), ownership (who), time (when), and location (where)
+- Business Process: Progression of assets through various steps of a business process recorded for trail of evidence.
+  - Smart contracts enforce the business process on chain curbing rogue actions
+- Business Actions: User or machine initiated actions that allows assets to progress from one process state to the next
+- Actors: Users that interact with the asset to perform process actions and transform the asset from one state to next.
+  - Users that have ownership or custody of the asset.
+  - Users that participate in audit, review and attestation of the asset to validate history.
+- Role Permissions: Permissions to perform business actions are assigned by roles.
+  - The web interface and smart contracts enforce the permissions, preventing rogue users from tampering
+
+## Use cases
+
+### Supply Chain Management
+
+- everything needed to plan, build, create, manufacture and deliver a product to different types of customers
+- the goal is to streamline a distributed and complicated process, building trust between suppliers and partners and automation of contracts and negotiations throughough every step
+- benefits of smart contracts
+  - transparency
+  - tracability
+  - efficiency
+
+### Finance
