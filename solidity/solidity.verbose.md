@@ -1,8 +1,7 @@
 # solidity
 
-- strongly typed language used to develop smart contracts in the Ethereum platform
+- strongly typed language used to develop smart contracts in the Ethereum (and other) platform
 - there is some overlap with the ethereum.md file, rely on this one more (as it comes straight from solidity docs vs udacity)
-- fkn udacity solidity course sucks, just read the docs vs their old azz videos
   - bookmark: https://docs.soliditylang.org/en/latest/types.html#ternary-operator
 
 ## links
@@ -20,36 +19,38 @@
 - [spdx license list](https://spdx.org/licenses/)
 - [npm spdx](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#license)
 - [npm semvar](https://docs.npmjs.com/cli/v6/using-npm/semver)
-- ref
-  - [installation types & steps](https://docs.soliditylang.org/en/latest/installing-solidity.html)
-  - [reference types data location](https://docs.soliditylang.org/en/latest/types.html#reference-types)
-  - [data types](https://docs.soliditylang.org/en/latest/types.html)
-  - [mapping data type](https://docs.soliditylang.org/en/latest/types.html#mapping-types)
-  - [getter fns](https://docs.soliditylang.org/en/latest/contracts.html#getter-functions)
-  - [integer types](https://docs.soliditylang.org/en/latest/types.html#integers)
-  - [events](https://docs.soliditylang.org/en/latest/contracts.html#events)
-  - [special variables & fns](https://docs.soliditylang.org/en/latest/units-and-global-variables.html#special-variables-functions)
-  - [error handling: assert, require, revert and exceptions](https://docs.soliditylang.org/en/latest/control-structures.html#assert-and-require)
-  - [checked/unchecked arithmetic](https://docs.soliditylang.org/en/latest/control-structures.html#unchecked)
-  - [errors and revert](https://docs.soliditylang.org/en/latest/contracts.html#errors)
-  - [revert statement](https://docs.soliditylang.org/en/latest/control-structures.html#revert-statement)
-  - [opcodes](https://docs.soliditylang.org/en/latest/yul.html#opcodes)
-  - [math & cryptographic fns](https://docs.soliditylang.org/en/latest/units-and-global-variables.html#mathematical-and-cryptographic-functions)
-  - [inline assembly](https://docs.soliditylang.org/en/latest/assembly.html)
-  - [libraries & contracts](https://docs.soliditylang.org/en/latest/contracts.html#libraries)
-  - [interfaces](https://docs.soliditylang.org/en/latest/contracts.html#interfaces)
-  - [source files](https://docs.soliditylang.org/en/latest/layout-of-source-files.html)
-  - [structure of a contract](https://docs.soliditylang.org/en/latest/structure-of-a-contract.html#contract-structure)
-  - [layout](https://docs.soliditylang.org/en/latest/layout-of-source-files.html)
-  - [pragmas](https://docs.soliditylang.org/en/latest/layout-of-source-files.html#pragma)
-  - [using for directive](https://docs.soliditylang.org/en/latest/contracts.html#using-for)
-  - [structs](https://docs.soliditylang.org/en/latest/types.html#structs)
-  - [enums](https://docs.soliditylang.org/en/latest/types.html#enums)
-  - [functions](https://docs.soliditylang.org/en/latest/contracts.html#functions)
-  - [constant and immutable state vars](https://docs.soliditylang.org/en/latest/contracts.html#constants)
-  - [contract metadata](https://docs.soliditylang.org/en/latest/metadata.html#metadata)
-  - [styleguide](https://docs.soliditylang.org/en/latest/style-guide.html#)
-  - [operator precedence](https://docs.soliditylang.org/en/latest/cheatsheet.html#order)
+
+### ref
+
+- [installation types & steps](https://docs.soliditylang.org/en/latest/installing-solidity.html)
+- [reference types data location](https://docs.soliditylang.org/en/latest/types.html#reference-types)
+- [data types](https://docs.soliditylang.org/en/latest/types.html)
+- [mapping data type](https://docs.soliditylang.org/en/latest/types.html#mapping-types)
+- [getter fns](https://docs.soliditylang.org/en/latest/contracts.html#getter-functions)
+- [integer types](https://docs.soliditylang.org/en/latest/types.html#integers)
+- [events](https://docs.soliditylang.org/en/latest/contracts.html#events)
+- [special variables & fns](https://docs.soliditylang.org/en/latest/units-and-global-variables.html#special-variables-functions)
+- [error handling: assert, require, revert and exceptions](https://docs.soliditylang.org/en/latest/control-structures.html#assert-and-require)
+- [checked/unchecked arithmetic](https://docs.soliditylang.org/en/latest/control-structures.html#unchecked)
+- [errors and revert](https://docs.soliditylang.org/en/latest/contracts.html#errors)
+- [revert statement](https://docs.soliditylang.org/en/latest/control-structures.html#revert-statement)
+- [opcodes](https://docs.soliditylang.org/en/latest/yul.html#opcodes)
+- [math & cryptographic fns](https://docs.soliditylang.org/en/latest/units-and-global-variables.html#mathematical-and-cryptographic-functions)
+- [inline assembly](https://docs.soliditylang.org/en/latest/assembly.html)
+- [libraries & contracts](https://docs.soliditylang.org/en/latest/contracts.html#libraries)
+- [interfaces](https://docs.soliditylang.org/en/latest/contracts.html#interfaces)
+- [source files](https://docs.soliditylang.org/en/latest/layout-of-source-files.html)
+- [structure of a contract](https://docs.soliditylang.org/en/latest/structure-of-a-contract.html#contract-structure)
+- [layout](https://docs.soliditylang.org/en/latest/layout-of-source-files.html)
+- [pragmas](https://docs.soliditylang.org/en/latest/layout-of-source-files.html#pragma)
+- [using for directive](https://docs.soliditylang.org/en/latest/contracts.html#using-for)
+- [structs](https://docs.soliditylang.org/en/latest/types.html#structs)
+- [enums](https://docs.soliditylang.org/en/latest/types.html#enums)
+- [functions](https://docs.soliditylang.org/en/latest/contracts.html#functions)
+- [constant and immutable state vars](https://docs.soliditylang.org/en/latest/contracts.html#constants)
+- [contract metadata](https://docs.soliditylang.org/en/latest/metadata.html#metadata)
+- [styleguide](https://docs.soliditylang.org/en/latest/style-guide.html#)
+- [operator precedence](https://docs.soliditylang.org/en/latest/cheatsheet.html#order)
 
 ## todos (skipped)
 
@@ -75,6 +76,7 @@
   - mapping types
   - iterable mappings
   - operators (section right after iterable mappings)
+- [common patterns](https://docs.soliditylang.org/en/latest/common-patterns.html)
 
 ## terms
 
@@ -376,7 +378,9 @@ sudo apt-get install solc
 
 - division on integers always results in an integer (solidity rounds down)
 - Fallback functions provide a safeguard. They are automatically triggered if the function signature does not match any of the function signatures in the smart contract. A contract can have exactly one fallback function. These fallback functions are unnamed.
-- "Modifiers can be used to easily change the behavior of functions. For example, they can automatically check a condition prior to executing the function. Modifiers are inheritable properties of contracts and may be overridden by derived contracts.
+- Modifiers can be used to easily change the behavior of functions.
+  - i.e. implement design by contract
+  - are inheritable properties of contracts and may be overridden by derived contracts.
 
 ## algorithms & strategies
 
