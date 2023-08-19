@@ -1,7 +1,7 @@
 # blockchain
 
 - udacitys blockchain course
-- Intro to Zero Knowledge Proofs - Part 1
+- Smart Contract Security > Lesson Intro
 
 ## links
 
@@ -47,6 +47,7 @@
 - [trust dapp browser](https://trustwallet.com/dapp)
 - [why web 3.0 matters](https://medium.com/@Matzago/why-the-web-3-0-matters-and-you-should-know-about-it-a5851d63c949)
 - [understanding web 3.0](https://www.coinbase.com/blog/understanding-web-3-a-user-controlled-internet)
+- [blockchain oracles](https://chain.link/education/blockchain-oracles)
 
 ## terminology
 
@@ -367,7 +368,6 @@
 ##### private keys
 
 - private key: a cryptographically secure randomly generated number that allows you to send crypto from your wallet; everytime you interact with the blockchain, you have to sign that transaction with your private key
-  - can be any number from 1 to 2^256
 - formats:
   - hexadecimal: 256 bits === 32 bytes
   - wallet import format (WIF): make it easier to make different copies for different use cases
@@ -476,8 +476,17 @@
 - privacy issues
   - if you know who owns the public key to some signature, then you know who owns that data
 
-#### ring signatures
+#### Zero-knowledge proofs
 
+- zero knowledge: the entity your proving to doesnt learn anything more than the bare fact you're proving
+- zero knowledge interactive proof: proving a fact by repeated computations until the entity you're proving to is satisfied, but without revealing the actualy algorithm
+  - generally only useful in scenarios where entities actively take part in the computation, as internal entities could be acting in coordination to fool observers
+- zero knowledge non-interactive proof: proofs where the secret holder can create a proof without relying on anyone else
+
+##### ring signatures
+
+- zero knowledge proofs of set membership
+  - an entity can proove they own a public key part of ring set, without revealing which specific key
 - overcomes the privacy issue of assymetric signatures by validaing against a set of public keys instead of a specific public key
 - simple explanation of algorithm
   - combines a set of public keys into a list (aka ring)
@@ -485,9 +494,32 @@
   - if at least one key was used to sign the data, its considered valid
   - and if the same key signs different messages, you can verify it was signed by the same key
 
-#### Zero-knowledge proofs
+##### ZK-SNARKS
 
-- abcd
+- simple explanation
+  - prove to an entity that you have the input to a computed value (e.g. a hashs input) with cryptographic certainty without you revealing the underlying computation or what the input is
+  - a way to prove something non-interactively, in a cryptographically secure fashion
+- an acronym someone somewhere is really proud of
+  - ZK: zero knowledge; prooving something without revealing anything more
+  - S: succint; in terms of data, the size of the proof generated relative to the size of the knowledge you claim to possess, is minimal
+    - important in environments where data storage is expensive, e.g. on the blockchain
+  - N: non interactive; sufficient proof for everyone
+  - AR: arguments; i.e. the stuff you provide to prove the proof, probably should google this as aaron's explanation wasnt that intuitive
+  - K: the knowledge you're trying to prove you have
+- cryptogrpaphic circuit: a program that accepts a hash from entity A, and some data from entity B, computes the digest from empty B's data and compares it to the digest received from entity A
+  - this enables entity B to prove to entity A that it has the secret data, without revealing what that data is
+  - entity B cannot change the cryptographic circuit without entity A knowing about it, so entity A trusts entity B indeed has the data that created its hash
+
+#### Differential Privacy
+
+- a set of techniques used to maximize both the usefulness of a dataset as well as the privacy of individuals within that dataset
+  - overcomes the competing goals of companies needing identifiable data, and users needing their privacy
+  - enables a company to learn general patterns of behavior about a group of participants without knowing details of any specific user
+- this is different than just anonymizing/de-identifying PII
+- general process involves a bunch of statistical methods, but as an example:
+  - data collectors apply random noise to the dataset before providing it to data consumers
+    - this random noise makes specific users data untrustable
+    - since the data collectors know the amount of random noise introduced, they can still provide useful statistics to consumers
 
 ### digital assets
 
@@ -542,6 +574,10 @@
 - scarcity: creator decides how many NFT (i.e. tokens) exist
   - e.g. 500 tickets to a concert, 1 art piece
 - royalties: some NFTs automatically pay out royalties to their creators (e.g. foundation.app, zora.co)
+
+### Security
+
+- abcd
 
 ## Web 3.0
 
