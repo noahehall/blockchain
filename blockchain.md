@@ -1,11 +1,12 @@
 # blockchain
 
 - udacitys blockchain course
-- Smart Contract Security > Lesson Intro
+- Smart Contract Security > Solidity Security Considerations
+- todos
+  - cleanup these links
 
 ## links
 
-- [solidity: ethereum programming language](https://soliditylang.org/)
 - [how to timestamp a digital document, the first block idea](https://www.anf.es/pdf/Haber_Stornetta.pdf)
 - [ethereum NFT docs](https://ethereum.org/en/nft/)
 
@@ -48,6 +49,9 @@
 - [why web 3.0 matters](https://medium.com/@Matzago/why-the-web-3-0-matters-and-you-should-know-about-it-a5851d63c949)
 - [understanding web 3.0](https://www.coinbase.com/blog/understanding-web-3-a-user-controlled-internet)
 - [blockchain oracles](https://chain.link/education/blockchain-oracles)
+- [security: the DAO attack](https://www.coindesk.com/learn/understanding-the-dao-attack/)
+- [security: the Parity attack](https://www.coindesk.com/markets/2017/07/19/30-million-ether-reported-stolen-due-to-parity-wallet-breach/)
+- [tokens vs coins and creating your own](https://academy.binance.com/en/articles/how-to-create-your-own-cryptocurrency)
 
 ## terminology
 
@@ -577,7 +581,55 @@
 
 ### Security
 
-- abcd
+- remember:
+  - large amounts of money are involved in transactions that anyone can access
+  - smart contracts cant be updated after launch: they are eternal and P2P
+- auditing questions
+  - what vulnerabilities may be latent in the contract logic
+  - how might someone discover these vulnerabilities
+  - if found, how would someone exploit each vulnerability
+  - what needs to be changed to remove and guard against these issues
+
+### Case Studies
+
+#### the DAO Attack
+
+- accounted for the loss of around 60 million dollars worth of Ethereum
+- business case
+  - the smart contract was like venture capital fund: allowing users to donate to causes they deem worthy
+- core logic
+  - enables users to donate coins to some address
+  - allows users to withdraw previously donated coins
+- the vulnerability
+  - the Fundraiser code that enabled a user to withdraw previously donated coins didnt account for how a wallet will interact with the contract
+    - when the Fundraiser contract called the payout function, it was delegated to the contributing wallet's payout function
+      - the contributing wallet called payout() BEFORE the Fundraiser contract ZEROED the donated balance
+- the hack
+  - since payout() is called before the donated balanced is ZEROED
+  - the contributing wallets payout function was changed to recursively call withdraw() before returning to the Fundraiser contract
+  - hence draining the contract for ALL coins donated and NOT just the contributing wallets donated balance
+- the fix
+  - moving the line that ZEROED the contributing wallets balance BEFORE the payout logic begins
+  - now if the payout function is recursively called, they will receive 0 coin since the donated balance has been zeroed
+
+#### the Parity Attack
+
+- resulted in many millions of dollars in lost Ethereum
+- business case
+  - parity wallet provided a library contract that helped other users create wallets
+  - the goal was to provide base logic reusable in any wallet
+- core logic
+  - delegate calls: enables contract A to call functions from contract B
+  - fallback function: all contracts can contain a single anonymous function that acts as the fallback whenever an undeclared function is invoked
+    - e.g. contract A calls fn iDontExist in contract B, contract B will invoke its fallback function
+- the vulnerability
+  - the way the library was setup to initialize and add a wallet owner was invalid based on delegate calls and fallback funtions
+- the hack
+  - user A deployed a contract based on the invalid library
+  - now when user B utilized the malicious contract it made a call to a function that doesnt exist, and when the delegate call invokes the fullback function, the malicious contract called addOwner to change the contract owner from user B to user A
+  - user A then fk uped user B's whole summer
+    - and this happened to every user who created a contract utilizing the invalid library
+- the fix
 
 ## Web 3.0
 
