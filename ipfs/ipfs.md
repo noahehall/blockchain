@@ -7,10 +7,10 @@
 ## links
 
 - [landing page](https://ipfs.tech/)
+- [docs landing page](https://docs.ipfs.tech/)
 - [ENS domains](https://ens.domains/)
 - [ipfs github org](https://github.com/ipfs)
 - [install steps for bunches of components](https://ipfs.tech/#install)
-- [getting started docs: requires daemon running](http://docs.ipfs.tech.ipns.localhost:8080/)
 
 ### browser
 

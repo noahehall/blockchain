@@ -2,7 +2,7 @@
 
 - udacitys blockchain course
   - wouldnt trust anything in this repo until i clean it up
-- Distributed File System > IPFS Text
+- Validating Development Environment
 - todos
   - cleanup these links
 
