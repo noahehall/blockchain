@@ -1,6 +1,7 @@
 # blockchain
 
 - udacitys blockchain course
+- Intro to Zero Knowledge Proofs - Part 1
 
 ## links
 
@@ -424,25 +425,69 @@
 - best practices
   - the master key must be secured, as everything falls apart if its leaks
 
-### hashing
+### privacy
 
+- various cryptographic algorithms to maintain privacy
+
+#### Hashing
+
+- hash function: any function that can be used to map data of arbitrary size to fixed-size values, though there are some hash functions that support variable length output.
+- hash values: the values returned by a hash function
+  - usually used to index a fixed-size table called a hash table. Use of a hash function to index a hash table is called hashing or scatter storage addressing.
+- cryptographic hash function: uses cryptography to generate a hash value thats difficult to reverse engineer or generate using a different input
 - blockchain hashing logic
   - generate private key
   - hash private key with ECDSA to create public key
-  - hash public key with SHA256 (256 bits), then with primitive to digest (RIPEMD-160, 160 bits) to create a public key hash
+  - hash public key with SHA256, then with primitive to digest (RIPEMD-160) to create a public key hash
   - make the wallet address via Base58Check
+- privacy issues with hashing
+  - if you simply hash and commit transactions to the blockchain, eavesdropper wont be able to know the hash input, but will still be able to see the level of activity
+- positives
+  - entities can safely conceal and send data to each other, as well as verify the data hasnt been tampered with by recomputing the hash digest and comparing
 
-### digital signatures
+#### Merkle Trees
 
-- check websecurity file
-  - all blockchains use
-    - assymetric (public-key) encryption for wallets
-      - public key: encrypt data
-      - private key: decrypt data
-    - hash fns for data integrity
+- overcomes the privacy issues of hashing by concealing the number of hashes committed
+- general algorithm
+  - the input is a set of values
+  - compute the hash for each value in the set
+  - recursively combine and compute the hash for each pair of hashes until a single hash remains, creating a sort of balanced tree
+    - if you have an odd number of hash values, duplicate the last one
+  - the final hash is the merkle root
+  - commit the merkle root to the blockchain
+- merkle proof: the minimum number of hashes that make up the merkle root required to determine if some hash X is indeed part of the merkle root
+  - the merkle proof for some hash X is all the hashes used to include hash X into the merkle root in the recursive hashing computation step
+  - this enables entities to validate hash X is indeed part of the merkle root that was committed to the blockchain without requiring every hashed used in the merkle root
+- positives
+  - merkle trees summarizes all the transactions in a blockchain block and produces a digital fingerprint of all the transactions enabling entities to verify individual transactions are indeed included in a block
+
+#### digital signatures
+
+- all blockchains use
+  - assymetric (public-key) encryption for wallets
+    - public key: encrypt data
+      - you get the public key of an entity, encrypt data, and send it to them
+    - private key: decrypt data
+      - only the private key can decrypt data, never share this
+  - hash fns for data integrity
 - establishes a proof of ownership for each transaction on the blockchain
 - created via the wallet address
 - before the blockchain accepts a transaction, it must be signed
+- privacy issues
+  - if you know who owns the public key to some signature, then you know who owns that data
+
+#### ring signatures
+
+- overcomes the privacy issue of assymetric signatures by validaing against a set of public keys instead of a specific public key
+- simple explanation of algorithm
+  - combines a set of public keys into a list (aka ring)
+  - when it is time to verify some piece of data, it is checked against all keys in the ring
+  - if at least one key was used to sign the data, its considered valid
+  - and if the same key signs different messages, you can verify it was signed by the same key
+
+#### Zero-knowledge proofs
+
+- abcd
 
 ### digital assets
 
