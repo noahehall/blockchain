@@ -38,6 +38,7 @@
     - [ERCs](https://eips.ethereum.org/erc)
     - [EIP-20 (fungible) token standard](https://eips.ethereum.org/EIPS/eip-20)
     - [EIP-721 non fungible token standard](https://eips.ethereum.org/EIPS/eip-721)
+  - [security tools](https://ethereum-contract-security-techniques-and-tips.readthedocs.io/en/latest/security_tools/)
 
 ## terms
 

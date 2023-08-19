@@ -53,6 +53,8 @@
 - [operator precedence](https://docs.soliditylang.org/en/latest/cheatsheet.html#order)
 - [delegate calls](https://docs.soliditylang.org/en/latest/introduction-to-smart-contracts.html#delegatecall-and-libraries)
 - [fallback functions](https://docs.soliditylang.org/en/latest/contracts.html#fallback-function)
+- [security considerations](https://docs.soliditylang.org/en/latest/security-considerations.html)
+- [common patterns](https://docs.soliditylang.org/en/latest/common-patterns.html)
 
 ## todos (skipped)
 

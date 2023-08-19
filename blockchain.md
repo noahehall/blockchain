@@ -1,7 +1,7 @@
 # blockchain
 
 - udacitys blockchain course
-- Smart Contract Security > Solidity Security Considerations
+- Distributed File System > intro
 - todos
   - cleanup these links
 
@@ -9,6 +9,7 @@
 
 - [how to timestamp a digital document, the first block idea](https://www.anf.es/pdf/Haber_Stornetta.pdf)
 - [ethereum NFT docs](https://ethereum.org/en/nft/)
+- [consensys incubator and security team for smart contracts](https://consensys.io/diligence/)
 
 ### todos
 
@@ -52,6 +53,12 @@
 - [security: the DAO attack](https://www.coindesk.com/learn/understanding-the-dao-attack/)
 - [security: the Parity attack](https://www.coindesk.com/markets/2017/07/19/30-million-ether-reported-stolen-due-to-parity-wallet-breach/)
 - [tokens vs coins and creating your own](https://academy.binance.com/en/articles/how-to-create-your-own-cryptocurrency)
+- [smart contract security guide](https://scsfg.io/)
+- [smart contract attacks whitepaper PDF](https://eprint.iacr.org/2016/1007.pdf)
+- [making smart contracts smarter whitepaper PDF](https://eprint.iacr.org/2016/633.pdf)
+- [example smart contract vulnerabilities](https://github.com/crytic/not-so-smart-contracts)
+- [smart contract bet practices](https://consensys.github.io/smart-contract-best-practices/)
+- [smart contract auditing services](https://blog.coinfabrik.com/category/smart-contracts/smart-contract-audit-smart-contracts/)
 
 ## terminology
 
@@ -601,6 +608,7 @@
   - enables users to donate coins to some address
   - allows users to withdraw previously donated coins
 - the vulnerability
+  - in the ether docs its called `Re-Entrancy`
   - the Fundraiser code that enabled a user to withdraw previously donated coins didnt account for how a wallet will interact with the contract
     - when the Fundraiser contract called the payout function, it was delegated to the contributing wallet's payout function
       - the contributing wallet called payout() BEFORE the Fundraiser contract ZEROED the donated balance
