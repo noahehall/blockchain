@@ -1,7 +1,8 @@
 # blockchain
 
 - udacitys blockchain course
-- Distributed File System > Decentralized Storage vs HTTP
+  - wouldnt trust anything in this repo until i clean it up
+- Distributed File System > IPFS Text
 - todos
   - cleanup these links
 
@@ -127,6 +128,13 @@
 - an event triggers the contract to execute whatever code is held within the contract
 - enabled developers to create programs ontop of the blockchain and organize decentralized governance
 - dApps: application whose backend runs on a decentralized network
+- consensus
+  - arbitration: how are disputes handled; must abide (and think about) laws in the real world
+  - transaction validation: all participants required?
+  - record immutability: will amend/cancel operations be required?
+- data storage: which blockchain to utilize?
+  - storing data on the blockchain is expensive, think about DFS protocols like ipfs/swarm/etc
+  - can still utilize traditional databases as well
 
 #### ethereum
 
@@ -657,8 +665,6 @@
 - blockchain server: middle man between a frontend client (wallet/another server) and the blockchain network
   - blockchain node provider
 - decentralized storage
-  - in the course IPFS and Swarm were talked about, but both seem to be dead
-  - theres a link in the TODOs for the ethereum storage docs
 
 #### Modeling Blockchain Solutions
 
@@ -673,15 +679,14 @@
 - Role Permissions: Permissions to perform business actions are assigned by roles.
   - The web interface and smart contracts enforce the permissions, preventing rogue users from tampering
 
-#### Smart Contract considerations
+#### Development Components
 
-- consensus
-  - arbitration: how are disputes handled; must abide (and think about) laws in the real world
-  - transaction validation: all participants required?
-  - record immutability: will amend/cancel operations be required?
-- data storage: which blockchain to utilize?
-  - transactional data: can be split between blockchain and traditional databases,
-  - visibility: public/private blockchain
+- code editor: e.g. vscode or remix-ide
+- development framework: e.g. truffle for ethereum to develop, test and deploy dApps to an ethereum node
+- development node: you need a sandbox for testing dApps
+  - e.g. ethereum requires an ethereum node, and has tools to create local nodes like Infura
+- storage: if going blockchain native use a DFS protocol like ipfs/ether swarm
+- browser: access dApps via browser extensions like metamask or using brave (i think)
 
 ### Decentralized File System (DFS)
 

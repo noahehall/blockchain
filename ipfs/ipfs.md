@@ -1,12 +1,15 @@
 # ipfs
 
 - decentralized storage and p2p media distribution protocol
-- how you can create a domain name in the ENS (ethereum name service) e.g. nirv.eth
+- a set of composable, peer-to-peer protocols for addressing, routing, and transferring content-addressed data in a decentralized file system
+- how you can create a domain name on the ENS (ethereum name service)
 
 ## links
 
 - [landing page](https://ipfs.tech/)
 - [ENS domains](https://ens.domains/)
+- [ipfs github org](https://github.com/ipfs)
+- [install steps for bunches of components](https://ipfs.tech/#install)
 
 ## Basics
 
