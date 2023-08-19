@@ -11,6 +11,11 @@
 - [ipfs github org](https://github.com/ipfs)
 - [install steps for bunches of components](https://ipfs.tech/#install)
 
+### browser
+
+- [gateway: view a file on ipfs](https://gateway.ipfs.io/ipfs/<hash-value>)
+- [local: web UI](http://localhost:5001/webui)
+
 ## Basics
 
 - enables nodes to upload, download and share files with other users in the network
@@ -28,3 +33,12 @@
   - i.e. ipfs/hashValue vs http://folder/folder/file
 - benefits
   - it doesnt matter where a file is located on the network, if you have its hash it can be retrieved
+
+## Web UI
+
+- is available when you start a node
+
+## gateway
+
+- where all ipfs data can be retrieved over http
+- files added to ipfs are publically available on the internet

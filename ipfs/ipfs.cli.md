@@ -12,17 +12,19 @@
 ```sh
 # install via the kubo link up top
 
-ipfs
-  init # a repository for the current user
-  id # ls your peer ID on the network
-    someOtherPeerId # on the network, e.g. from swarm peers
-  commands # list all commands
-  daemon # start one, lol but not in daemon mode, maybe theres a flag
-  swarm
-    peers # find peers
+# ipfs CMD x y z
+init # a repository for the current user
+commands # list all commands
+daemon # start one, lol but not in daemon mode, maybe theres a flag
+
+# peers
+id # ls your peer ID on the network
+  someOtherPeerId # on the network, e.g. from swarm peers
+swarm
+  peers # find peers
+
+# working with files
+add some/file # POST a file to ipfs, returns digest of content
+cat DIGEST # echos content
 
 ```
-
-## Web UI
-
-- [access on localhost](http://localhost:5001/webui)
