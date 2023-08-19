@@ -8,6 +8,9 @@
 
 ## basics
 
+- Stop Loss: a term indicating the immediate need to stop doing whatevers causing the business to lose money
+  - from a smart contract perspective, this e.g. would require a contract owner to pause the smart contract
+
 ### escrow
 
 - legal arrangement in which a hird party temporarily holds money/property untila particular condition has bene met

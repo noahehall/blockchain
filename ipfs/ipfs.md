@@ -3,6 +3,8 @@
 - decentralized storage and p2p media distribution protocol
 - a set of composable, peer-to-peer protocols for addressing, routing, and transferring content-addressed data in a decentralized file system
 - how you can create a domain name on the ENS (ethereum name service)
+- TODOs
+  - this file, and the cli file dont do IPFS justice; you need to read the docs
 
 ## links
 

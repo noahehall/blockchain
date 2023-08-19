@@ -2,9 +2,10 @@
 
 - udacitys blockchain course
   - wouldnt trust anything in this repo until i clean it up
-- Validating Development Environment
+- Stop Loss > Pausing a Smart Contract > second video
 - todos
   - cleanup these links
+  - after auditing the course, you need to run through all of these files and reorganize them
 
 ## links
 
@@ -126,7 +127,6 @@
 
 - a legal contract; programs that perform transactions with the ability to act on acccounts and the data stored in the blockchain
 - an event triggers the contract to execute whatever code is held within the contract
-- enabled developers to create programs ontop of the blockchain and organize decentralized governance
 - dApps: application whose backend runs on a decentralized network
 - consensus
   - arbitration: how are disputes handled; must abide (and think about) laws in the real world
@@ -599,6 +599,11 @@
 - remember:
   - large amounts of money are involved in transactions that anyone can access
   - smart contracts cant be updated after launch: they are eternal and P2P
+    - however you can pause them so no further transactions are processed
+      - add a boolean variable that determines the state of the contract
+      - add a function that enables the contract owner/delegate to update the state variable
+      - add a function modifier with require() that references the variable and branches based on its current value
+        - this should be added to all functions that change contract state
 - auditing questions
   - what vulnerabilities may be latent in the contract logic
   - how might someone discover these vulnerabilities
