@@ -1,7 +1,7 @@
 # blockchain
 
 - udacitys blockchain course
-- Distributed File System > intro
+- Distributed File System > Decentralized Storage vs HTTP
 - todos
   - cleanup these links
 
@@ -683,10 +683,21 @@
   - transactional data: can be split between blockchain and traditional databases,
   - visibility: public/private blockchain
 
+### Decentralized File System (DFS)
+
+- aims to replace HTTP protocol
+  - how computers format and transmit information over the web
+  - embraces blockchain principles like decentralization and p2p networks
+  - moving ownership of data into the hands of users that generate it, instead of centralized ownership by big tech companies like AWS, google and dropbox
+- used in coordination with dApps, to create fully decentralized applications
+  - dApps: decentralization computation via blockchain
+  - dfs: decentralized, distributed storage
+
 ## Use cases
 
 - remember the blockchain is simply a distributed ledger for tracking stuff
 - you can utilize the blockchain as a database for any thing that needs to be tracked and verified by participants in a process
+- a big plus if there is money being moved around, as you can eliminate third parties (sorry banks!)
 
 ### Supply Chain Management
 
