@@ -269,6 +269,10 @@ sudo apt-get install solc
 
 ### events
 
+- solidity functions can emit events and client applications can use this as async triggers
+- emitting events is also the cheapest way to store data on the blockchain
+  - by default events are stored as log data
+
 #### logs
 
 - special indexed data structure that maps all the way up to the block level

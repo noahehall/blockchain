@@ -3,7 +3,7 @@
 - udacitys blockchain course
   - wouldnt trust anything in this repo until i clean it up
   - focusing on finishing up some AWS architecture but need to complete auditing this course before it ends
-- Smart Contract Upgradability > Separate Data and Logic
+- Dapp UX > introduction
 - todos
   - cleanup these links
   - after auditing the course, you need to run through all of these files and reorganize them
@@ -126,68 +126,6 @@
 - takes many of the lessons learned from first generation blockchains
 - focused on recording transactions on the blockchain, adding in programming & logic for associated data via smart contracts
 
-#### Smart Contracts
-
-- a legal contract; programs that perform transactions with the ability to act on acccounts and the data stored in the blockchain
-- an event triggers the contract to execute whatever code is held within the contract
-- dApps: application whose backend runs on a decentralized network
-- consensus
-  - arbitration: how are disputes handled; must abide (and think about) laws in the real world
-  - transaction validation: all participants required?
-  - record immutability: will amend/cancel operations be required?
-- data storage: which blockchain to utilize?
-  - storing data on the blockchain is expensive, think about DFS protocols like ipfs/swarm/etc
-  - can still utilize traditional databases as well
-- best practices
-  - test test test, unit tests have never been more important
-  - remember all execution of code costs money (GAS) and there is a block gas limit that sets the maximum execution time for a smart contract
-    - fail fast: you dont want to get half way through some business logic only to fail later in the process
-    - business logic should be efficiency, watch out for iterations and logical branches
-      - this is a potential lockout scenario if your function cant complete within the gas limit, it wont be able to execute anything else
-      - you can externalize loops to the calling program and keep them out of your smart contract
-
-##### Upgradability
-
-- reasons to upgrade
-  - bug found in a deployed contract
-  - business rules have changed requiring the contract code to be updated
-  - contract owners private key lost/compromised/etc introducing the risk of financial/privacy/data etc lost/issues
-  - gas prices have increased and code that was previously efficient is now
-    - too costly and needs to be optimized to lower contract execution costs
-    - its hitting gas limits
-- upgrade workarounds: the contracts are still immutable, you just need to architect around that fact
-  - isolate contract data and application logic into separate contracts
-    - application logic can then be upgraded and redeployed when necessary
-    - the contract data remains immutable; if data structures change, your still fked
-  - migrate contract data to a new contract using a client application
-    - requires moving potentially large data stores: moving data from prevContract to newContract will incur gas fees
-    - you may need to break data into small chunks to avoid hitting gas limits
-  - add proxy dispatcher contract that acts as an intermediary between distinct data contracts and logic contracts
-    - the proxy dispatcher contract becomes the immutable layer and references the other two contracts
-    - overcomes the previous two architectural approaches
-    - is complex to implement without introducing any vulnerabilities
-      - using delegatecalls are prone to security issues
-  - update the data contract to only store key value pairs: i.e. an internal storage design pattern
-    - application logic cannot benefit from semantic data values
-    - however now you can store anything you want
-      - key: hash of the value
-      - value: the value
-    - now you can redeploy the logic contract whenever the values change in the data contract
-
-##### Multi-Party Consensus
-
-- enables multisig transactions but at the smart contract (code) level
-- still described as M of N
-- general logic
-  - const M: number of keys required to executed a transaction
-  - const N: number of available private keys
-    - usually defined indirectly through a set of permitted wallet addresses, e.g. having certain accounts flagged as administrators, or a fixed array of addresses, a function that de/registers a set of accounts, etc etc
-  - initialize some counter C on first call of some function requiring the multi-party consensus
-    - increment the counter on each subsequent fn call made by distinct administrators, but short circuit until the required threshold is reached
-      - make sure the same admin isnt counted more than once
-  - basically for some function X, requiring atleast M out of N addresses to agree to allow some transaction, provide some function Y that they can call to cast their vote
-    - theres multiple ways to implement this, e.g. consensus achieved within a certain duration, as function modifier, etc etc
-
 #### ethereum
 
 - the first to introduce smart contracts
@@ -197,6 +135,8 @@
 
 ## blockchain framework
 
+- TODOs
+  - move everything below this bullet point into its appropriate place
 - transaction: a record of information, e.g. who sent it, received, etc
   - are sent to other users and grouped with other transactions into a specific block
   - submitted by users to a node to be included in the next block
@@ -659,6 +599,151 @@
 - scarcity: creator decides how many NFT (i.e. tokens) exist
   - e.g. 500 tickets to a concert, 1 art piece
 - royalties: some NFTs automatically pay out royalties to their creators (e.g. foundation.app, zora.co)
+
+### Smart Contracts
+
+- a legal contract; programs that perform transactions with the ability to act on acccounts and the data stored in the blockchain
+- an event triggers the contract to execute whatever code is held within the contract
+- dApps: application whose backend runs on a decentralized network
+- consensus
+  - arbitration: how are disputes handled; must abide (and think about) laws in the real world
+  - transaction validation: all participants required?
+  - record immutability: will amend/cancel operations be required?
+- data storage: which blockchain to utilize?
+  - storing data on the blockchain is expensive, think about DFS protocols like ipfs/swarm/etc
+  - can still utilize traditional databases as well
+- best practices
+  - test test test, unit tests have never been more important
+  - remember all execution of code costs money (GAS) and there is a block gas limit that sets the maximum execution time for a smart contract
+    - fail fast: you dont want to get half way through some business logic only to fail later in the process
+    - business logic should be efficiency, watch out for iterations and logical branches
+      - this is a potential lockout scenario if your function cant complete within the gas limit, it wont be able to execute anything else
+      - you can externalize loops to the calling program and keep them out of your smart contract
+
+#### Upgradability
+
+- reasons to upgrade
+  - bug found in a deployed contract
+  - business rules have changed requiring the contract code to be updated
+  - contract owners private key lost/compromised/etc introducing the risk of financial/privacy/data etc lost/issues
+  - gas prices have increased and code that was previously efficient is now
+    - too costly and needs to be optimized to lower contract execution costs
+    - its hitting gas limits
+- upgrade workarounds: the contracts are still immutable, you just need to architect around that fact
+
+  - isolate contract data and application logic into separate contracts
+    - application logic can then be redeployed when necessary
+      - the logic contract consumes the data contract
+        - add an address paramter to the logic conctracts constructor that expects the data contracts address
+        - initialize the data contract via its passed in address and save to a state variable
+        - embedd an interface matching the data contract functions you'll be consuming within the logic contract
+          - the interface functions and their corrosponding data contract functions all need to be marked as external
+      - the data contract NEVER calls out to the logic contract
+    - the data contract remains immutable
+      - if data structures change, your still fked
+        - you should move transient data into the logic contract
+      - arbitrary contracts can inspect your data contract
+        - you need to mitigate this risk in code
+  - migrate contract data to a new contract using a client application
+    - requires moving potentially large data stores: moving data from prevContract to newContract will incur gas fees
+    - you may need to break data into small chunks to avoid hitting gas limits
+  - add proxy dispatcher contract that acts as an intermediary between distinct data contracts and logic contracts
+    - the proxy dispatcher contract becomes the immutable layer and references the other two contracts
+    - overcomes the previous two architectural approaches
+    - is complex to implement without introducing any vulnerabilities
+      - using delegatecalls are prone to security issues
+  - update the data contract to only store key value pairs: i.e. an internal storage design pattern
+    - application logic cannot benefit from semantic data values
+    - however now you can store anything you want
+      - key: hash of the value
+      - value: the value
+    - now you can redeploy the logic contract whenever the values change in the data contract
+  - security between data and logic contracts
+    - add a state variable to the data contract for tracking which logic contracts can invoke the data contract
+    - add functions (limited to contract owner) to the data contract that
+      - adds a new authorized contract
+      - removes an existing authorized contract
+      - checks if some caller is an authorized contract
+
+- enables multisig transactions but at the smart contract (code) level
+- still described as M of N
+- general logic
+  - const M: number of keys required to executed a transaction
+  - const N: number of available private keys
+    - usually defined indirectly through a set of permitted wallet addresses, e.g. having certain accounts flagged as administrators, or a fixed array of addresses, a function that de/registers a set of accounts, etc etc
+  - initialize some counter C on first call of some function requiring the multi-party consensus
+    - increment the counter on each subsequent fn call made by distinct administrators, but short circuit until the required threshold is reached
+      - make sure the same admin isnt counted more than once
+  - basically for some function X, requiring atleast M out of N addresses to agree to allow some transaction, provide some function Y that they can call to cast their vote
+    - theres multiple ways to implement this, e.g. consensus achieved within a certain duration, as function modifier, etc etc
+
+#### Oracles
+
+- gateways used by smart contracts to interact with non-chain services
+  - these services generally provide data in return for fees
+  - there is inherint risks of malicious actors when using trustless oracles
+- general workflow
+  - a smart contract triggers a request for some data via some oracle
+  - the oracle parses and executes the requests
+  - the oracle transforms and returns the response to the smart contract as a transaction
+- examples
+  - any API thats not on the chain is an example ;)
+
+##### Trusted Oracles
+
+- centralized, single point of failures typically used in private blockchains
+- are known to be secure, reliable and resiliant to manipulation
+
+##### Trustless Oracles
+
+- publically available oracles that may/not be malicious
+- require considerable measures to minimize exposure to malicious actors
+- trust minimizing vectors:
+  - FYI
+    - theres on automatic failover on the blockchain in the event of oracle failure
+    - you need to manually write code that checks the accuracy and validity of data retrieved offchain
+    - and you need to account for the gas costs of updating contract logic after deployment if you dont get your fallback mechanisms right
+  - use multiple data sources if they exist
+  - use multiple oracles for the same data source if only one exists
+  - prefer oracles that have stakes on your blockchain
+    - this indicates a certain level of trust, read the proof of stake section again
+
+#### Oracle Securty
+
+- generally all attack vectors involve and oracle trying to influence the decision made by smart contracts
+  - i.e. how can a malicious oracle manipulate the output of smart contracts by fucking with the input the oracle provides to it
+- defending against malicious oracles
+  - block the means of communication with other oracles; i.e. sandbox them
+  - block the ability to identify other oracles used by your smart contract
+  - block the ability to see data submitted by other oracles
+    - while all data on the blockchain is public, you can store store the hash digest instead of the raw value
+  - if possible, require oracles to pay a fee when registering with your smart contract
+    - if they have a stake, they will likely play by the rules
+  - track the trustworthiness of oracles within the smart contract
+    - you'll always to consume multiple oracles to guard against malicious actors
+    - you'll be able to compare the data each provides overtime in order to determine which ones provide the most relevant and trustworthy data
+
+##### Sybil Attacks
+
+- a single entity fakes to be multiple entities in order to influence some action
+- e.g. user impersonation, creating multiple accounts, etc
+
+##### Cartel Attacks
+
+- a group of entities collude to influence some action, or create scenarios/outcomes that favor the group
+
+##### Mirroring Attacks
+
+- multiple oracles will copy what some other oracle does to tip the balance in the data consumed by smart contracts
+
+##### Freeloading Attacks
+
+- oracles will require some bullshit work to be done in order to increase transaction fees, but without incurring gas costs themselves by stealing the output from other oracles
+- this reduces the quality of the data being consumed because the freeloading oracle doesnt actually do the work to produce the data, but steals it
+
+##### Privacy Attacks
+
+- an oracle takes advantage of access it may have to data in order to influence some action/output
 
 ### Security
 
