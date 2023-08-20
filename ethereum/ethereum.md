@@ -42,12 +42,9 @@
 
 ## terms
 
-- ether: the cryptocurrency of ethereum
 - kill switch: self destructs a smart contract
 - patricia tree: data structure; Practical Algorithm to Retrieve Information Code in Alphanumeric
 - gas: the cost of executing transactions on the EVM.
-- Wei: smaller denomination of Ether, 1 ether === 10^18 Wei
-- Gwei: gigga wei, 6 billion wei
 - clients: different ways to interact with the ethereum blockchain
   - geth: go ethereum
   - ethereumjs: javascript client
@@ -90,6 +87,34 @@
 - destroy
   - important to self-destruct the contract so no one can call functions on it anymore
   - contrats also tend to have ether in it, so keeping a contract around (instead of self destructing) puts those funds at risk
+
+### Introduction
+
+- accounts: either Contract Accounts or Externally owned Accounts
+- ether (ETH) cryptocurrency, generally denominated in Wei
+- receiving funds
+  - any contract function with the `payable` keyword can receive funds, i.e. can be paid
+    - the `msg.value` indicates the amount of `wei` received
+  - a contract with a fallback function is a generic way to receive funds
+    - fallback functions have no name, and only one can exist per contract
+    - funds sent from a contract to a fallback function in another contract have a low gas stipend of 2300
+  - funds received by a contract persist to the Contract Account
+    - received funds must be transferred to an Externally Owned Account via code or used up by the contracts code to pay gas costs, else they remain forever in the Contract Account
+- sending funds
+  - general methods to transfer funds to an EOA
+    - `address.transfer()` throws on error, gas stipend of 2300
+    - `address.send()` returns false on error, gas stipend of 2300
+    - `address.call.value()` is unsafe, as it can use ALL of the available gas
+  - best practices
+    - always use a pull and not a push when sending funds
+      - you credit the account in the contract, but dont send it
+      - when the EOA wants their funds, they can request (i.e. pull) it by calling some fn you provide
+    - when determining who is requesting funds use `msg.sender` and not `tx.origin`
+      - msg.sender returns the direct address of the account that invoked the function
+      - if msg.sender == tx.origin that indicates its a Contract Account, and not an EOA
+      - if tx.origin exists that means your fn is being called by another contract, or via some chain of contracts
+  - Gotchas
+    - possibility of funds being frozen if sending funds from within a loop and you hit gas limits
 
 ## blockchain framework
 
@@ -153,9 +178,12 @@
     - data: todo
     - init: todo
 
-#### ether
+#### ether (ETH)
 
 - the native ucrrency of ethereum used to power smart contracts
+- all other cryptocurrencies running on ethereum are Tokens and not technical cryptocurrencies
+- Wei: smaller denomination of Ether, 1 ether === 10^18 Wei
+- Gwei: gigga wei, 6 billion wei
 
 ### wallet
 
@@ -170,18 +198,24 @@
   - code hash: hash of the code within the smart contract; executes everytime a call is made to the contract; cannot change after its deployed
   - account storage
   - ethereum virtual code
-- account types
-  - EOAs: externally owned accounts;
-    - tied to a private key
-    - doesnt hold code
-    - maintains ether balance
-    - can send transactions/transfer between wallets
-    - initiate smart contracts
-  - CAs: contract accounts;
-    - has code thats triggered by transactions/messages
-    - controlled by the code contained within smart contracts
-    - transfer value, initiate another smart contract, and execute associated smart contracts, manipulate storage
-    - abi: application binary interface: javascript representation of the contract
+
+##### Contract Accounts (CAs)
+
+- may receive and hold funds
+- cannot send funds without code because they dont have a private key
+  - controlled by the code contained within smart contracts
+  - the code is triggered by transactions/messages
+- transfer value, initiate another smart contract, and execute associated smart contracts, manipulate storage
+- abi: application binary interface: javascript representation of the contract
+
+##### Externally owned accounts (EOAs)
+
+- i.e. user accounts
+- can receive, send and hold funds without code
+  - send transactions/transfer between wallets
+- tied to a private key
+- initiate smart contracts
+- maintains ether balance
 
 ### hashing
 
@@ -203,6 +237,40 @@
     - once the stuff is received, you update the smart contract and it will send the ether to the seller
 - test network: for testing smart contracts via the EVM
 - gotchas: once your smart contracts are deployed to the blockchain it cannot be changed!
+
+##### payment protection patterns
+
+###### checks, effects, interactions
+
+- protects against re-entrancy attacks
+- check: all conditions are met and expected arguments are valid
+- side effects: update any state variables before executing any transactions
+  - lol ZERO/decrement the balance BEFORE sending the money
+- interact: with other contracts, e.g. sending them crypto
+  - these other contracts could contain malicious code, hence you need to ensure you're contract has been fully updated in case they try to re-enter and fk up your weekend
+
+###### rate limiting
+
+- controls the frequency at which a contract operation (e.g. fn invocation) can occur to minimize loss e.g. rapid drainage of funds
+- best implemented as a function modifier that accepts a time argument indicating the delay between invocations
+  - a fn modifier makes it reusable throughout the smart contract
+- general logic
+  - initialize a state variable, startTime to the current time e.g. block.timestamp
+  - the fn modifier should verify that block.timestamp >= startTime
+  - if some, increment startTime by the duration required between calls
+    - that way on the next invocation, if the duration hasnt passed, the check will fail
+
+###### Re-Entrancy Guarding
+
+- prevents a contract function from calling itself multiple times in a single transaction
+- best implemented as a function modifier, so that its reusable throughout the contract
+- general logic
+  - you initialize a counter state var in the contract
+  - within the fn modifier, increment then copy the state var to a local var
+  - then call function using the `_` placeholder
+  - then require that the local var == state var
+    - this last require causes the contract to fail if `_` fn trys to re-enter
+    - because after the invocation stack returns from the recursion, the state var will be > the local var
 
 #### tokens
 

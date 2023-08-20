@@ -2,10 +2,12 @@
 
 - udacitys blockchain course
   - wouldnt trust anything in this repo until i clean it up
-- Stop Loss > Pausing a Smart Contract > second video
+  - focusing on finishing up some AWS architecture but need to complete auditing this course before it ends
+- Receiver, Transfer and send Funds > Security Best Practices
 - todos
   - cleanup these links
   - after auditing the course, you need to run through all of these files and reorganize them
+    - e.g. theres a lot of duplicate ish between this and the ethereum verbose file, and likely smart contracts should be in a distinct file
 
 ## links
 
@@ -135,6 +137,27 @@
 - data storage: which blockchain to utilize?
   - storing data on the blockchain is expensive, think about DFS protocols like ipfs/swarm/etc
   - can still utilize traditional databases as well
+- best practices
+  - test test test, unit tests have never been more important
+  - remember all execution of code costs money (GAS) and there is a block gas limit that sets the maximum execution time for a smart contract
+    - fail fast: you dont want to get half way through some business logic only to fail later in the process
+    - business logic should be efficiency, watch out for iterations and logical branches
+      - this is a potential lockout scenario if your function cant complete within the gas limit, it wont be able to execute anything else
+      - you can externalize loops to the calling program and keep them out of your smart contract
+
+##### Multi-Party Consensus
+
+- enables multisig transactions but at the smart contract (code) level
+- still described as M of N
+- general logic
+  - const M: number of keys required to executed a transaction
+  - const N: number of available private keys
+    - usually defined indirectly through a set of permitted wallet addresses, e.g. having certain accounts flagged as administrators, or a fixed array of addresses, a function that de/registers a set of accounts, etc etc
+  - initialize some counter C on first call of some function requiring the multi-party consensus
+    - increment the counter on each subsequent fn call made by distinct administrators, but short circuit until the required threshold is reached
+      - make sure the same admin isnt counted more than once
+  - basically for some function X, requiring atleast M out of N addresses to agree to allow some transaction, provide some function Y that they can call to cast their vote
+    - theres multiple ways to implement this, e.g. consensus achieved within a certain duration, as function modifier, etc etc
 
 #### ethereum
 
@@ -395,6 +418,20 @@
 - generating
   - find a secure source of entropy to make it random/unpredictable
 
+###### Multi-Signature Accounts (multisig)
+
+- i.e accounts that have multiple private keys
+  - e.g. avaliable on the bitcoin blockchain
+  - ethereum uses multi-party consensus instead
+- similar to how hashicorp vault requires multiple keys to unlock the vault db
+- described as M of N accounts,
+  - M the number of required keys for a transaction
+  - N the total number of keys available
+- benefits
+  - prevents thefts of funds, since multisig accounts requires multiple keys to sign transactions, no single key will put the entire account at risk
+  - prevents loss of a single key
+  - enables business rules for arbitrary types of transactions, e.g. based on total amount may require different amount of keys
+
 ##### public key
 
 - public key: a shareable key that cannot be used to spend crypto; but used to receive crypto; created from the private key via some one-way elliptic curge digital signature algo (ECDSA see security docs for indepth);
@@ -599,16 +636,25 @@
 - remember:
   - large amounts of money are involved in transactions that anyone can access
   - smart contracts cant be updated after launch: they are eternal and P2P
-    - however you can pause them so no further transactions are processed
-      - add a boolean variable that determines the state of the contract
-      - add a function that enables the contract owner/delegate to update the state variable
-      - add a function modifier with require() that references the variable and branches based on its current value
-        - this should be added to all functions that change contract state
+    - however you can pause them so no further transactions are processed, see stop loss section
 - auditing questions
   - what vulnerabilities may be latent in the contract logic
   - how might someone discover these vulnerabilities
   - if found, how would someone exploit each vulnerability
   - what needs to be changed to remove and guard against these issues
+
+#### Stop Loss
+
+- business case
+  - since you cant update a contract (i.e. change its terms) once its been deployed
+    - imagine being able to change the terms of a contract in the real world after all parties agreed on it! doh!
+  - the contract owner can instead pause the contract by changing its state
+- general logic
+  - add a boolean variable that determines the state of the contract
+  - add a function that enables the contract owner to update the state variable
+  - add a function modifier with require() that references the variable and short circuits based on its current value
+    - a helper modifier fn should be applied to all functions that change state to shortcircuit based on the current state
+      - FYI: be careful not to introduce any `Lockout Bugs` whereby the owner gets locked out of updating the state variable because its in a falsy state
 
 ### Case Studies
 

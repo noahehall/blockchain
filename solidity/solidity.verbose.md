@@ -1,6 +1,7 @@
 # solidity
 
-- strongly typed language used to develop smart contracts in the Ethereum (and other) platform
+- strongly typed language used to develop smart contracts in the Ethereum (and other) platforms
+  - polkadot, binance smart chain, tron, uniswap, avalanche, Hedera Hashgraph
 - there is some overlap with the ethereum.md file, rely on this one more (as it comes straight from solidity docs vs udacity)
   - bookmark: https://docs.soliditylang.org/en/latest/types.html#ternary-operator
 
