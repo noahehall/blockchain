@@ -3,7 +3,7 @@
 - udacitys blockchain course
   - wouldnt trust anything in this repo until i clean it up
   - focusing on finishing up some AWS architecture but need to complete auditing this course before it ends
-- Smart Contract Upgradability > first video
+- Smart Contract Upgradability > Separate Data and Logic
 - todos
   - cleanup these links
   - after auditing the course, you need to run through all of these files and reorganize them
@@ -63,6 +63,7 @@
 - [example smart contract vulnerabilities](https://github.com/crytic/not-so-smart-contracts)
 - [smart contract bet practices](https://consensys.github.io/smart-contract-best-practices/)
 - [smart contract auditing services](https://blog.coinfabrik.com/category/smart-contracts/smart-contract-audit-smart-contracts/)
+- [solidity design pattern quicky](https://blog.logrocket.com/developers-guide-solidity-design-patterns/)
 
 ## terminology
 
@@ -144,6 +145,34 @@
     - business logic should be efficiency, watch out for iterations and logical branches
       - this is a potential lockout scenario if your function cant complete within the gas limit, it wont be able to execute anything else
       - you can externalize loops to the calling program and keep them out of your smart contract
+
+##### Upgradability
+
+- reasons to upgrade
+  - bug found in a deployed contract
+  - business rules have changed requiring the contract code to be updated
+  - contract owners private key lost/compromised/etc introducing the risk of financial/privacy/data etc lost/issues
+  - gas prices have increased and code that was previously efficient is now
+    - too costly and needs to be optimized to lower contract execution costs
+    - its hitting gas limits
+- upgrade workarounds: the contracts are still immutable, you just need to architect around that fact
+  - isolate contract data and application logic into separate contracts
+    - application logic can then be upgraded and redeployed when necessary
+    - the contract data remains immutable; if data structures change, your still fked
+  - migrate contract data to a new contract using a client application
+    - requires moving potentially large data stores: moving data from prevContract to newContract will incur gas fees
+    - you may need to break data into small chunks to avoid hitting gas limits
+  - add proxy dispatcher contract that acts as an intermediary between distinct data contracts and logic contracts
+    - the proxy dispatcher contract becomes the immutable layer and references the other two contracts
+    - overcomes the previous two architectural approaches
+    - is complex to implement without introducing any vulnerabilities
+      - using delegatecalls are prone to security issues
+  - update the data contract to only store key value pairs: i.e. an internal storage design pattern
+    - application logic cannot benefit from semantic data values
+    - however now you can store anything you want
+      - key: hash of the value
+      - value: the value
+    - now you can redeploy the logic contract whenever the values change in the data contract
 
 ##### Multi-Party Consensus
 
@@ -637,6 +666,7 @@
   - large amounts of money are involved in transactions that anyone can access
   - smart contracts cant be updated after launch: they are eternal and P2P
     - however you can pause them so no further transactions are processed, see stop loss section
+    - and there are some workarounds to upgrading contracts, see elseware
 - auditing questions
   - what vulnerabilities may be latent in the contract logic
   - how might someone discover these vulnerabilities
