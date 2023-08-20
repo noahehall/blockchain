@@ -272,6 +272,38 @@
     - this last require causes the contract to fail if `_` fn trys to re-enter
     - because after the invocation stack returns from the recursion, the state var will be > the local var
 
+#### Security
+
+- explicitly mark visibility of functions and state variables
+  - preferably private/internal
+    - especially those handling transactions, unless needing to be invoked by calling contracts
+    - reduces the possibility of external contracts directly manipulating state variables/invoking transaction related functions
+- reduce risk of re-entry attacks
+  - debit before credit: always deduct the amount to a var, before posting the amount to an account
+- a Contract Account may use `delegatecall()` to invoke your contract functions, be aware of this and code defensively
+  - check `msg.sender == tx.origin`
+- when dealing with time, remember
+  - the now keyword is a pointer to block.timestamp and can be manipulated by miners
+  - time should not be used for random number generation
+- prefix all calls (and scoped variables) to external contracts with `untrusted`
+  - code defensively and use require statements and other mechanisms more aggressively
+- dealing with sensitive information
+  - on chain data is always public, dont store any sensitive information without fully encrypting it
+  - private scoped variables only refers to the scope within the contract
+    - once the contract is deployed, all variables are visible
+- use function modifiers wisely
+  - only for assertions, never for state changes as it may cause side effects within the lexical scope
+- use fallback functions effectively
+  - keep em short
+  - always require msg.data.length == zero
+    - any ether sent to the contract that is not captured by a specific function is sent to the fallback funtion if its payable
+      - its possible for malicious users attempting to change the state of the contract via the fullback function using msg.data
+    - there is never a circumstance where a payable fallback function requires msg.data
+- storage: does X really need to be onchain?
+  - the blockchain is not intended as a db for high throughput
+  - it is also expensive (gas costs)
+  - use DFS or traditional dbs for data that doesnt need to be on chain
+
 #### tokens
 
 - built on the ethereum platform

@@ -3,7 +3,7 @@
 - udacitys blockchain course
   - wouldnt trust anything in this repo until i clean it up
   - focusing on finishing up some AWS architecture but need to complete auditing this course before it ends
-- Receiver, Transfer and send Funds > Security Best Practices
+- Smart Contract Upgradability > first video
 - todos
   - cleanup these links
   - after auditing the course, you need to run through all of these files and reorganize them
