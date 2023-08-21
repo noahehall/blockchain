@@ -1,11 +1,11 @@
 # blockchain
 
+- Dapp UX > Context - Best Practice
 - udacitys blockchain course
   - wouldnt trust anything in this repo until i clean it up
   - focusing on finishing up some AWS architecture but need to complete auditing this course before it ends
 - remember the blockchain is simply a distributed ledger for tracking stuff
 - you can utilize the blockchain as a database for any thing that needs to be tracked and verified by participants in a process
-- Dapp UX > Provenance - Best Practice
 - todos
   - cleanup these links
   - after auditing the course, you need to run through all of these files and reorganize them
@@ -887,4 +887,16 @@
 - managed and surface events
   - a single transaction can potentially emit hundreds of events
   - some of these events need to be filtered and surface to users, others need to be searchable but not disruptive
-- data provenance: communicate where data is coming from to the user
+- data provenance: communicate where data is coming from/going to
+  - all user data on the blockchain is public
+  - ensure you add logic to hash private data
+  - when a user sees some data, inform them (when appropriate) if its blockchain, traditional db, or a third party oracle
+    - especially oracle data, which can be untrustworthy and you have 0 control over
+- manage wallet addresses with your life
+  - if your users must come face-to-face with the one million long string of a wallet address, remember that its completely alien to them
+  - generally enable users to assign labels, and surface the label instead of the unfriendly wallet addr, which can be revealed in full elseware in your app
+  - all wallet addrs should be easily copypastable, one-click-copy, etc, generally thats the most frustrating part
+  - the most important part of the addr if required to reveal is the first few chars, and the last few chars, e.g. `ux12...3456`
+- surface a users transaction history in the most consumable way possible
+  - when a user takes an action, it may take a couple minutes/hours before they get feedback, thus a user-friendly history is critical
+  - this is especially important in relation to events, which should always surface as part or be linked to related history of events
