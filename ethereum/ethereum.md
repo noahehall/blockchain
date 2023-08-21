@@ -17,7 +17,8 @@
 
 ## links
 
-- [ethereum](https://ethereum.org/)
+- [landing page](https://ethereum.org/)
+- [local dev](https://ethereum.org/en/developers/local-environment/)
 - [ethereum stackexchange](https://ethereum.stackexchange.com)
 - [ethereum youtube](https://www.youtube.com/user/ethereumproject)
 - [networks & public faucets](https://ethereum.org/en/developers/docs/networks/)
