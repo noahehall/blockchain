@@ -3,7 +3,9 @@
 - udacitys blockchain course
   - wouldnt trust anything in this repo until i clean it up
   - focusing on finishing up some AWS architecture but need to complete auditing this course before it ends
-- Dapp UX > introduction
+- remember the blockchain is simply a distributed ledger for tracking stuff
+- you can utilize the blockchain as a database for any thing that needs to be tracked and verified by participants in a process
+- Dapp UX > Provenance - Best Practice
 - todos
   - cleanup these links
   - after auditing the course, you need to run through all of these files and reorganize them
@@ -831,6 +833,7 @@
 - blockchain server: middle man between a frontend client (wallet/another server) and the blockchain network
   - blockchain node provider
 - decentralized storage
+- dApp
 
 #### Modeling Blockchain Solutions
 
@@ -864,20 +867,24 @@
   - dApps: decentralization computation via blockchain
   - dfs: decentralized, distributed storage
 
-## Use cases
+### dApps
 
-- remember the blockchain is simply a distributed ledger for tracking stuff
-- you can utilize the blockchain as a database for any thing that needs to be tracked and verified by participants in a process
-- a big plus if there is money being moved around, as you can eliminate third parties (sorry banks!)
+#### UX best practices
 
-### Supply Chain Management
-
-- everything needed to plan, build, create, manufacture and deliver a product to different types of customers
-  - all the processes involved with the production and distribution of a commodity.
-- the goal is to streamline a distributed and complicated process, building trust between suppliers and partners and automation of contracts and negotiations throughough every step
-- benefits of smart contracts
-  - transparency
-  - tracability
-  - efficiency
-
-### Finance
+- nothing is realtime on the blockchain
+  - blockchain transactions can take an indeterminate amount of time to process
+  - you need to provide realistic feedback to users who are accustomed to the short feedback loops of mobile/web apps
+  - there are third party services that can provide a realistic estimate of when a transaction will be added to the blockchain
+  - push notifications will be your best friend
+- communicate side effects of user actions
+  - web 3 is a paradigm shift in experience to web 2,
+  - most users will be unfamiliar with terms, have diverse expectations, and unclear about the underlying process
+  - focus on user actions that change state, reveal privacy, and most of all involve transactions
+- controlling costs
+  - all transactions pay gas fees, even transactions that fail
+  - in the real world credit card fees are generally hidden from credit card users and are paid by vendors
+  - in the crypto world gas fees are paid by users
+- managed and surface events
+  - a single transaction can potentially emit hundreds of events
+  - some of these events need to be filtered and surface to users, others need to be searchable but not disruptive
+- data provenance: communicate where data is coming from to the user
