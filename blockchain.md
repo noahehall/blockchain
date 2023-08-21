@@ -900,3 +900,11 @@
 - surface a users transaction history in the most consumable way possible
   - when a user takes an action, it may take a couple minutes/hours before they get feedback, thus a user-friendly history is critical
   - this is especially important in relation to events, which should always surface as part or be linked to related history of events
+- context is key for user onboarding
+  - depending on the complexity of the dApp, you may provide users access to the testnet where they can use fake crypto for simulated transactions
+  - in this scenario, ensure this is highly prevalent in the UI
+- privacy maybe the one of the most important aspects of your dApp
+  - there is no such thing as privacy on a public blockchain
+  - ensure you're hashing/encrypting everything, or store it off chain
+- the information architecture, and emergent Affordance is critical
+  - affordance is the creation of a design so intuitive it doesnt require the user to think
