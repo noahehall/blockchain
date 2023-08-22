@@ -1,7 +1,7 @@
 # Truffle Suite
 
 - smart contract development
-- bookmark: https://trufflesuite.com/docs/truffle/how-to/create-a-project/
+- https://trufflesuite.com/docs/truffle/how-to/create-a-project/
 
 ## links
 
@@ -34,18 +34,34 @@ truffle version # verify it all works
 npm i -g ganache
 
 ## quick cmds
+truffle CMD x y z
 
-truffle
-  test # all files in test dir
-  compile # all files in contracts dir to the build dir
-  migrate # deploy compiled files to the blockchain
-  develop # spin up a basic ganache instance and connects a console to it
-  console # connects to the blockchain specified in config.network
-  dashboard # deploy to alternative networks
+init # a barebones project
+unbox BOXNAME DIRNAME # use BOXNAME template
+
+test # all files in test dir
+compile # incrementally all files in contracts dir to the build dir
+  -all # force compile
+migrate # deploy compiled files to the blockchain
+
+develop # spin up a basic ganache instance and connects a console to it
+console # connects to the blockchain specified in config.network
+dashboard # deploy to alternative networks
+
 
 ```
 
+### Directory Hierarchy
+
+- build: output dir
+  - contracts: compiled
+- contracts: for solidity contracts
+- migrations: for scriptable deployment files
+- tests: for tests
+
 ### Configuration
+
+- root/truffle-config.js
 
 ```jsonc
 {

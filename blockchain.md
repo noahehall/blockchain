@@ -1,6 +1,5 @@
 # blockchain
 
-- Dapp UX > Context - Best Practice
 - udacitys blockchain course
   - wouldnt trust anything in this repo until i clean it up
   - focusing on finishing up some AWS architecture but need to complete auditing this course before it ends

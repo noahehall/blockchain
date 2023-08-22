@@ -1,9 +1,6 @@
 # ethereum
 
-- open source programmable blockchain platform
-- a decentralized platform that runs smart contracts
-- a general purpose blockchain, thats built to run any type of smart contract
-  - as opposed to first genertion blockchains, built to execute specific transaction types (e.g. bitcoin === finance)
+- open source programmable, decentralized blockchain platform that runs smart contracts
 - characteristics
   - permissionless: anyone can join the network
   - consensus: PoW, but working towards Proof of Stake

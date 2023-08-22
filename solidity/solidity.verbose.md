@@ -23,6 +23,7 @@
 
 ### ref
 
+- [layout of source files](https://solidity.readthedocs.org/en/latest/layout-of-source-files.html)
 - [installation types & steps](https://docs.soliditylang.org/en/latest/installing-solidity.html)
 - [reference types data location](https://docs.soliditylang.org/en/latest/types.html#reference-types)
 - [data types](https://docs.soliditylang.org/en/latest/types.html)
