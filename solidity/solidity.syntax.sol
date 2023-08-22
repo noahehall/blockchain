@@ -5,6 +5,7 @@ pragma solidity >=0.8 <0.9.0;
 // import * as poop from "./poop";
 // import "./poop" as poop; // alternative
 // import { flush, toilet as tl } from "./poop";
+// import "someNpmPackage/SomeContract.sol"; // if using truffle
 
 /*
   * This is a mltiline comment

@@ -1,7 +1,7 @@
 # Truffle Suite
 
 - smart contract development
-- https://trufflesuite.com/docs/truffle/how-to/create-a-project/
+- https://trufflesuite.com/docs/truffle/how-to/truffle-with-metamask/#using-metamask-with-ganache
 
 ## links
 
@@ -10,6 +10,10 @@
 - [install steps](https://trufflesuite.com/docs/truffle/how-to/install/)
 - [ethereum client](https://trufflesuite.com/docs/truffle/concepts/ethereum-client-types/)
 - [Truffle boxes](https://trufflesuite.com/boxes/)
+
+### ecosystem
+
+- [@truffle/contract](https://github.com/trufflesuite/truffle/tree/develop/packages/contract)
 
 ### docs
 
@@ -85,3 +89,9 @@ dashboard # deploy to alternative networks
 ## Testing
 
 - truffle tests can be written in typescript
+
+## ecosystem
+
+### @truffle/contract
+
+- npm package for interacting with contracts in a browser
