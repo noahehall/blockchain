@@ -9,6 +9,11 @@
   - cleanup these links
   - after auditing the course, you need to run through all of these files and reorganize them
     - e.g. theres a lot of duplicate ish between this and the ethereum verbose file, and likely smart contracts should be in a distinct file
+- bookmarks
+  - [metamask dev](https://docs.metamask.io/wallet/how-to/get-started-building/set-up-dev-environment/)
+  - [metamask intro](https://docs.metamask.io/wallet/)
+  - [truffle + metamask](https://trufflesuite.com/docs/truffle/how-to/truffle-with-metamask/#using-metamask-with-ganache)
+  - [solidity](https://docs.soliditylang.org/en/latest/layout-of-source-files.html)
 
 ## links
 
